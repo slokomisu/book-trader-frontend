@@ -1,22 +1,24 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { connect } from 'react-redux';
+import NavBar from './components/shared/NavBar'
+import PageComponent from './containers/PageComponent'
+import { Grid, Container } from 'semantic-ui-react';
 
-class App extends Component {
-  render() {
-    console.log(process.env.REACT_APP_API_URL);
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+const App = () =>
+  <div>
+    <NavBar/>
+    <Grid>
+      <Container>
+        <PageComponent/>
+      </Container>
+    </Grid>
+  </div>
+
+const mapState = ({auth}) => {
+  return {
+    auth
   }
 }
 
-export default App;
+const AppContainer = connect(mapState, null)(App)
+export default AppContainer;
