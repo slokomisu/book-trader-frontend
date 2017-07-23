@@ -2,6 +2,9 @@
   "name": "book-trader-frontend",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "v8.1.4"
+  },
   "dependencies": {
     "axios": "^0.16.2",
     "flow-bin": "^0.51.0",
