@@ -12,7 +12,7 @@ class AllBooksComponent extends Component {
 
     const childElement = this.props.books.map(book => {
       return (
-        <Image src={book.coverImage} />
+        <Image key={book._id} src={book.coverImage} />
       )
     })
 
