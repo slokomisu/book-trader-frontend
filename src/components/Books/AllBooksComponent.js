@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Grid, Header, Image } from 'semantic-ui-react'
+import { Grid, Header, Image, Loader } from 'semantic-ui-react'
 import Masonry from 'react-masonry-component'
 import { connect } from 'react-redux';
 
@@ -9,8 +9,9 @@ class AllBooksComponent extends Component {
 
 
   render () {
+    const { isFetching, books } = this.props;
 
-    const childElement = this.props.books.map(book => {
+    const childElement = books.map(book => {
       return (
         <Image key={book._id} src={book.coverImage} />
       )
@@ -26,11 +27,11 @@ class AllBooksComponent extends Component {
           </Header>
         </Grid.Column>
         <Grid.Row>
-          <Masonry options={{columnWidth: 200}}>
-            {/*<Image.Group>*/}
+          {isFetching && <Loader active/>}
+          {!isFetching &&
+           <Masonry options={{columnWidth: 200}}>
               {childElement}
-            {/*</Image.Group>*/}
-          </Masonry>
+          </Masonry>}
         </Grid.Row>
 
       </Grid.Row>
@@ -41,9 +42,10 @@ class AllBooksComponent extends Component {
 AllBooksComponent.propTypes = {}
 AllBooksComponent.defaultProps = {}
 
-const mapState = ({books: {bookList}}) => {
+const mapState = ({books: {bookList, isFetching}}) => {
   return {
-    books: bookList
+    books: bookList,
+    isFetching
   }
 }
 
