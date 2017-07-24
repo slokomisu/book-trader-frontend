@@ -34,7 +34,7 @@ const routesMap = {
 const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // yes, 3 redux aspects
 
 // and you already know how the story ends:
-const composeEnhancers = process.env.NODE_ENV === 'production' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+const composeEnhancers = compose;
 const rootReducer = combineReducers({
   location: reducer,
   userId: userIdReducer,
