@@ -23,8 +23,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "prebuild": "echo foo",
-    "build": "cd semantic && gulp build && cd .. && react-scripts build",
+    "prebuild": "cd semantic && gulp build",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
